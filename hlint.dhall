@@ -1,11 +1,12 @@
-    let Error = { error : { lhs : Text, rhs : Text, name : Optional Text } }
+    let hlint = ./constructors.dhall
 
-in  let Function = { functions : List { name : Text, within : List Text } }
+in  let recursion = ./recursion.dhall
 
-in  let Fixity = { fixity : Text }
+in  let fixity = ./fixity.dhall
 
-in  let Hint =
-          constructors
-          < Error : Error | Functions : Function | Fixity : Fixity >
+in  let bannedFunctions =
+          [ hlint.functions
+            { functions = [ { name = "fromJust", within = [] : List Text } ] }
+          ]
 
-in  { fixity = Hint.Fixity, functions = Hint.Functions, error = Hint.Error }
+in  fixity.defFixities # bannedFunctions # recursion

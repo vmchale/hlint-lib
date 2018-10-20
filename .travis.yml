@@ -1,0 +1,24 @@
+---
+language: c
+cache:
+  directories:
+    - $HOME/.ghc
+    - $HOME/.cabal
+addons:
+  apt:
+    packages:
+      libgmp3-dev
+      - cabal-install-2.4
+      - ghc-8.6.1
+    sources:
+      - hvr-ghc
+
+install:
+  - cabal new-update
+  - cabal new-install dhall
+  - cabal new-install dhall-to-json
+  - export PATH=$HOME/.cabal/bin:$PATH
+
+script:
+  - cat hlint.dhall | dhall
+  - cat hlint.dhall | dhall-to-yaml
