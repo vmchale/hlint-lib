@@ -8,38 +8,4 @@ in  let Hint =
           constructors
           < Error : Error | Functions : Function | Fixity : Fixity >
 
-in  let fixities =
-          [ Hint.Fixity { fixity = "infixr 3 ***" }
-          , Hint.Fixity { fixity = "infixr 3 &&&" }
-          , Hint.Fixity { fixity = "infixr 1 <=<" }
-          ]
-
-in  let bannedFunctions =
-          [ Hint.Functions
-            { functions = [ { name = "fromJust", within = [] : List Text } ] }
-          ]
-
-in  let rewrites =
-          [ Hint.Error
-            { error =
-                { lhs =
-                    "hylo embed"
-                , rhs =
-                    "ana"
-                , name =
-                    [ "Use ananorphism" ] : Optional Text
-                }
-            }
-          , Hint.Error
-            { error =
-                { lhs =
-                    "hylo f project"
-                , rhs =
-                    "cata f"
-                , name =
-                    [ "Use catamorphism" ] : Optional Text
-                }
-            }
-          ]
-
-in  fixities # bannedFunctions # rewrites
+in  { fixity = Hint.Fixity, functions = Hint.Functions, error = Hint.Error }

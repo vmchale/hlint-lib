@@ -6,6 +6,3 @@ Dhall.
 ## Use
 
 As an example:
-
-```dhall
-```
