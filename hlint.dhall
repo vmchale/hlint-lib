@@ -5,8 +5,6 @@ in  let recursion = ./recursion.dhall
 in  let fixity = ./fixity.dhall
 
 in  let bannedFunctions =
-          [ hlint.functions
-            { functions = [ { name = "fromJust", within = [] : List Text } ] }
-          ]
+          [ hlint.functions { functions = [ hlint.globalBan "fromJust" ] } ]
 
 in  fixity.defFixities # bannedFunctions # recursion

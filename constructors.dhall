@@ -10,4 +10,14 @@ in  let Hint =
               type.Fixity
           >
 
-in  { fixity = Hint.Fixity, functions = Hint.Functions, error = Hint.Error }
+in  let globalBan = λ(fun : Text) → { name = fun, within = [] : List Text }
+
+in  { fixity =
+        Hint.Fixity
+    , functions =
+        Hint.Functions
+    , error =
+        Hint.Error
+    , globalBan =
+        globalBan
+    }
