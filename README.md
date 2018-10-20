@@ -1,6 +1,8 @@
 # hlint-lib
 
-Reusable lints for [hlint](http://hackage.haskell.org/package/hlint), as a Dhall
+[![Build Status](https://travis-ci.org/vmchale/hlint-lib.svg?branch=master)](https://travis-ci.org/vmchale/hlint-lib)
+
+Configuration for [hlint](http://hackage.haskell.org/package/hlint), as a Dhall
 library.
 
 ## Use
@@ -8,11 +10,14 @@ library.
 As an example:
 
 ```dhall
-    let hlint = ./constructors.dhall
+    let hlint =
+          https://raw.githubusercontent.com/vmchale/hlint-lib/master/constructors.dhall
 
-in  let recursion = ./recursion.dhall
+in  let recursion =
+          https://raw.githubusercontent.com/vmchale/hlint-lib/master/recursion.dhall
 
-in  let fixity = ./fixity.dhall
+in  let fixity =
+          https://raw.githubusercontent.com/vmchale/hlint-lib/master/fixity.dhall
 
 in  let bannedFunctions =
           [ hlint.functions { functions = [ hlint.globalBan "fromJust" ] } ]
@@ -68,10 +73,10 @@ Lovingly provided by [polyglot](http://github.com/vmchale/polyglot):
 -------------------------------------------------------------------------------
  Language             Files       Lines         Code     Comments       Blanks
 -------------------------------------------------------------------------------
- Dhall                    5         136          114            0           22
- Markdown                 2          79           64            0           15
+ Dhall                    5         139          117            0           22
+ Markdown                 2          84           68            0           16
  YAML                     1          24           22            0            2
 -------------------------------------------------------------------------------
- Total                    8         239          200            0           39
+ Total                    8         247          207            0           40
 -------------------------------------------------------------------------------
 ```
