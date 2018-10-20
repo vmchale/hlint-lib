@@ -14,6 +14,7 @@ addons:
       - hvr-ghc
 
 install:
+  - export PATH=/opt/ghc/bin:$PATH
   - cabal new-update
   - cabal new-install dhall
   - cabal new-install dhall-to-json
