@@ -23,3 +23,19 @@ install:
 script:
   - cat hlint.dhall | dhall --explain
   - cat hlint.dhall | dhall-to-yaml
+  - cat constructors.dhall | dhall resolve | dhall normalize > constructors.dhall_i
+  - cat fixity.dhall | dhall resolve | dhall normalize > normalize.dhall_i
+  - cat recursion.dhall | dhall resolve | dhall normalize > recursion.dhall_i
+
+
+deploy:
+  api_key:
+    secure: "RAR5aaCJFJ5qI/GD+Z1UIX2V7Zb1ibBMnJB44KOfg6V1MHt7IhdEfuG1AaXlt0RDtFUf9CJGl8apUOXpBEoWdw1hkTe+CYLnnb2aQXmiLoSt+XMH07E0TNa3tDFRKwZfCyfrDuoJXJxIRIW28t5RocKRVIl8GXq+Z5cE+DrQb3g/DqqzPo855i5dOjGQlUAdh7KQ+RyjndSPZ+adV+ZTHQPyASVT9XoPR2PhEVmNpcgRwGW9dvA5qWeLVKryuJXsMrck2+1KsPkERsH5+9b4HT9EqzVddLhZFwLn4K6cwXh39KMEPNjgHk9Ty5vG0vy6RYrZmXAg2pFycngRGmefQRwCIDTCZ/iUn2VED5jRJY4xI92XDWUbhPlNPP+lYMhZHXmo76kIN0pmjjhq7lhHkelvR+XW+m0hZd8qVaPMDeCI32b1F8aek22nu4+RI/NMxGp9Z7NQnsg06C0Ij4YdKWvqstKTOUH+zYKZg2cS/rT0LDe++tPsBRbt5vHe7BfSAhUmHitcZ8GWgoJwDSQISW0fvhnxFvfPU6QoXIJ6Jj3R1tfFRK0CClZ490tiVyhL2TCcifR4mSaMCLYyuo2vvu+rbo/ucxGW8QoKRHj33C0dBpG0kFmDFqh5v+lasUMjKOsZOjqnGlMPuL1c913z1s+/1pAann9rzKFGp+bfKnI="
+  file:
+    - constructors.dhall_i
+    - normalize.dhall_i
+    - recursion.dhall_i
+  on:
+    tags: true
+  provider: releases
+  skip_cleanup: true
