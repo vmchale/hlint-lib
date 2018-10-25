@@ -1,5 +1,5 @@
     let hlint =
-          https://raw.githubusercontent.com/vmchale/hlint-lib/master/constructors.dhall
+          https://github.com/vmchale/hlint-lib/releases/download/0.1.0/constructors.dhall_i
 
 in  let recursion =
           https://raw.githubusercontent.com/vmchale/hlint-lib/master/recursion.dhall
