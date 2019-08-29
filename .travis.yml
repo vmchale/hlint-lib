@@ -9,16 +9,16 @@ addons:
     update: true
     packages:
       - libgmp3-dev
-      - cabal-install-2.4
-      - ghc-8.6.1
+      - cabal-install-3.0
+      - ghc-8.6.5
     sources:
       - hvr-ghc
 
 install:
   - export PATH=/opt/ghc/bin:$PATH
-  - cabal new-update
-  - cabal new-install dhall
-  - cabal new-install dhall-json
+  - cabal update
+  - cabal install dhall
+  - cabal install dhall-json
   - export PATH=$HOME/.cabal/bin:$PATH
 
 script:
