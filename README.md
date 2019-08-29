@@ -10,19 +10,18 @@ library.
 As an example:
 
 ```dhall
-    let hlint =
-          https://raw.githubusercontent.com/vmchale/hlint-lib/master/constructors.dhall
+let hlint = ./constructors.dhall
 
-in  let recursion =
-          https://raw.githubusercontent.com/vmchale/hlint-lib/master/recursion.dhall
+in  let recursion = ./recursion.dhall
 
-in  let fixity =
-          https://raw.githubusercontent.com/vmchale/hlint-lib/master/fixity.dhall
+    in  let fixity = ./fixity.dhall
 
-in  let bannedFunctions =
-          [ hlint.functions { functions = [ hlint.globalBan "fromJust" ] } ]
+        in  let bannedFunctions =
+                  [ hlint.functions
+                    { functions = [ hlint.globalBan "fromJust" ] }
+                  ]
 
-in  fixity.defFixities # bannedFunctions # recursion
+            in  fixity.defFixities # bannedFunctions # recursion
 ```
 
 Save this as `hlint.dhall`, run `cat hlint.dhall | dhall-to-yaml` and you should
@@ -73,10 +72,10 @@ Lovingly provided by [polyglot](http://github.com/vmchale/polyglot):
 -------------------------------------------------------------------------------
  Language             Files       Lines         Code     Comments       Blanks
 -------------------------------------------------------------------------------
- Dhall                    5         139          117            0           22
- Markdown                 2          84           68            0           16
- YAML                     1          24           22            0            2
+ Dhall                    5         157          135            0           22
+ Markdown                 2          83           67            0           16
+ YAML                     1          26           24            0            2
 -------------------------------------------------------------------------------
- Total                    8         247          207            0           40
+ Total                    8         266          226            0           40
 -------------------------------------------------------------------------------
 ```
