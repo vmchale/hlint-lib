@@ -1,22 +1,13 @@
 let type = ./Type.dhall
 
-in  let Hint =
-          < Error :
-              type.Error
-          | Functions :
-              type.Function
-          | Fixity :
-              type.Fixity
-          >
+in  let globalBan = λ(fun : Text) → { name = fun, within = [] : List Text }
 
-    in  let globalBan = λ(fun : Text) → { name = fun, within = [] : List Text }
-
-        in  { fixity =
-                Hint.Fixity
-            , functions =
-                Hint.Functions
-            , error =
-                Hint.Error
-            , globalBan =
-                globalBan
-            }
+    in  { fixity =
+            type.Hint.Fixity
+        , functions =
+            type.Hint.Functions
+        , error =
+            type.Hint.Error
+        , globalBan =
+            globalBan
+        }
