@@ -7,7 +7,7 @@ in  [ hlint.error
           , rhs =
               "ana"
           , name =
-              [ "Use ananorphism" ] : Optional Text
+              Some "Use ananorphism"
           }
       }
     , hlint.error
@@ -17,7 +17,7 @@ in  [ hlint.error
           , rhs =
               "cata f"
           , name =
-              [ "Use catamorphism" ] : Optional Text
+              Some "Use catamorphism"
           }
       }
     , hlint.error
@@ -27,7 +27,7 @@ in  [ hlint.error
           , rhs =
               "anaM"
           , name =
-              [ "Use monadic anamorphism" ] : Optional Text
+              Some "Use monadic anamorphism"
           }
       }
     , hlint.error
@@ -37,7 +37,7 @@ in  [ hlint.error
           , rhs =
               "cataM f"
           , name =
-              [ "Use monadic catamorphism" ] : Optional Text
+              Some "Use monadic catamorphism"
           }
       }
     ]

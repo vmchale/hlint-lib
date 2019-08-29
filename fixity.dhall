@@ -3,7 +3,7 @@
 in  let type = ./Type.dhall
 
 in  let map =
-          https://raw.githubusercontent.com/dhall-lang/dhall-lang/master/Prelude/List/map
+          https://raw.githubusercontent.com/dhall-lang/dhall-lang/9f259cd68870b912fbf2f2a08cd63dc3ccba9dc3/Prelude/List/map
 
 in  let mkFixity = λ(decl : Text) → hlint.fixity { fixity = decl }
 

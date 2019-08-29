@@ -1,7 +1,6 @@
     let type = ./Type.dhall
 
 in  let Hint =
-          constructors
           < Error :
               type.Error
           | Functions :
