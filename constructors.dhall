@@ -1,4 +1,4 @@
-    let type = ./Type.dhall
+let type = ./Type.dhall
 
 in  let Hint =
           < Error :
@@ -9,14 +9,14 @@ in  let Hint =
               type.Fixity
           >
 
-in  let globalBan = λ(fun : Text) → { name = fun, within = [] : List Text }
+    in  let globalBan = λ(fun : Text) → { name = fun, within = [] : List Text }
 
-in  { fixity =
-        Hint.Fixity
-    , functions =
-        Hint.Functions
-    , error =
-        Hint.Error
-    , globalBan =
-        globalBan
-    }
+        in  { fixity =
+                Hint.Fixity
+            , functions =
+                Hint.Functions
+            , error =
+                Hint.Error
+            , globalBan =
+                globalBan
+            }

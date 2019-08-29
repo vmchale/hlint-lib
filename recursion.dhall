@@ -1,14 +1,8 @@
-    let hlint = ./constructors.dhall
+let hlint = ./constructors.dhall
 
 in  [ hlint.error
       { error =
-          { lhs =
-              "hylo embed"
-          , rhs =
-              "ana"
-          , name =
-              Some "Use ananorphism"
-          }
+          { lhs = "hylo embed", rhs = "ana", name = Some "Use ananorphism" }
       }
     , hlint.error
       { error =
