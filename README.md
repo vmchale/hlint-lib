@@ -24,7 +24,7 @@ in  let recursion = ./recursion.dhall
             in  fixity.defFixities # bannedFunctions # recursion
 ```
 
-Save this as `hlint.dhall`, run `cat hlint.dhall | dhall-to-yaml` and you should
+Save this as `hlint.dhall`, run ` dhall-to-yaml <<< ./hlint.dhall` and you should
 get
 
 ```yaml
