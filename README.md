@@ -12,53 +12,56 @@ As an example:
 ```dhall
 let hlint = ./constructors.dhall
 
-in  let recursion = ./recursion.dhall
+let recursion = ./recursion.dhall
 
-    in  let fixity = ./fixity.dhall
+let fixity = ./fixity.dhall
 
-        in  let bannedFunctions =
-                  [ hlint.functions
-                    { functions = [ hlint.globalBan "fromJust" ] }
-                  ]
+let base = ./base.dhall
 
-            in  fixity.defFixities # bannedFunctions # recursion
+let bannedFunctions =
+      [ hlint.functions { functions = [ hlint.globalBan "fromJust" ] } ]
+
+in  fixity.defFixities # bannedFunctions # recursion # base
 ```
 
 Save this as `hlint.dhall`, run ` dhall-to-yaml <<< ./hlint.dhall` and you should
 get
 
 ```yaml
-- fixity: infixr 3 ***
-- fixity: infixr 3 &&&
-- fixity: infixr 2 +++
-- fixity: infixr 2 |||
-- fixity: infixr 1 <=<
-- fixity: infixl 4 <$
-- fixity: infixl 4 $>
-- fixity: infixl 1 <&>
-- fixity: infixl 4 *>
-- fixity: infixl 4 <*
-- fixity: infixl 3 <|>
-- fixity: infixl 4 <**>
+- fixity: "infixr 3 ***"
+- fixity: "infixr 3 &&&"
+- fixity: "infixr 2 +++"
+- fixity: "infixr 2 |||"
+- fixity: "infixr 1 <=<"
+- fixity: "infixl 4 <$"
+- fixity: "infixl 4 $>"
+- fixity: "infixl 1 <&>"
+- fixity: "infixl 4 *>"
+- fixity: "infixl 4 <*"
+- fixity: "infixl 3 <|>"
+- fixity: "infixl 4 <**>"
 - functions:
-  - name: fromJust
-    within: []
+    - name: fromJust
+      within: []
 - error:
-    lhs: hylo embed
-    name: Use ananorphism
+    lhs: "hylo embed"
+    name: "Use ananorphism"
     rhs: ana
 - error:
-    lhs: hylo f project
-    name: Use catamorphism
-    rhs: cata f
+    lhs: "hylo f project"
+    name: "Use catamorphism"
+    rhs: "cata f"
 - error:
-    lhs: hyloM (pure . embed)
-    name: Use monadic anamorphism
+    lhs: "hyloM (pure . embed)"
+    name: "Use monadic anamorphism"
     rhs: anaM
 - error:
-    lhs: hyloM f (pure . project)
-    name: Use monadic catamorphism
-    rhs: cataM f
+    lhs: "hyloM f (pure . project)"
+    name: "Use monadic catamorphism"
+    rhs: "cataM f"
+- error:
+    lhs: "fmap (const x)"
+    rhs: "(x <$)"
 ```
 
 ...containing prepackaged hints for working with recursion schemes as well as
