@@ -17,8 +17,8 @@ addons:
 install:
   - export PATH=/opt/ghc/bin:$PATH
   - cabal update
-  - cabal install dhall
-  - cabal install dhall-json
+  - cabal install dhall --overwrite-policy=always
+  - cabal install dhall-json --overwrite-policy=always
   - export PATH=$HOME/.cabal/bin:$PATH
 
 script:
