@@ -1,12 +1,10 @@
 let hlint = ./constructors.dhall
 
-in  let recursion = ./recursion.dhall
+let recursion = ./recursion.dhall
 
-    in  let fixity = ./fixity.dhall
+let fixity = ./fixity.dhall
 
-        in  let bannedFunctions =
-                  [ hlint.functions
-                    { functions = [ hlint.globalBan "fromJust" ] }
-                  ]
+let bannedFunctions =
+      [ hlint.functions { functions = [ hlint.globalBan "fromJust" ] } ]
 
-            in  fixity.defFixities # bannedFunctions # recursion
+in  fixity.defFixities # bannedFunctions # recursion
