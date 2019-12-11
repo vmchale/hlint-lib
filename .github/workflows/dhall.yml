@@ -1,0 +1,25 @@
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: "actions/checkout@v1"
+      - uses: "actions/setup-haskell@v1"
+        with:
+          cabal-version: "3.0"
+          ghc-version: "8.6.5"
+      - name: "Install dhall"
+        run: |
+          cabal update
+          cabal install dhall
+      - name: "Install dhall-to-yaml &c."
+        run: |
+          cabal update
+          cabal install dhall-json
+      - name: "Check Dhall can be converted to YAML"
+        run: |
+          export PATH=$HOME/.cabal/bin:$PATH
+          dhall-to-yaml --file self-ci.dhall
+          dhall-to-yaml --file hlint.dhall
+name: "Dhall CI"
+on:
+  - push
