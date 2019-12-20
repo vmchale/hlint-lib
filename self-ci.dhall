@@ -1,13 +1,9 @@
 let dhallCi =
-      https://raw.githubusercontent.com/vmchale/github-actions-dhall/master/dhall-ci.dhall sha256:50c5c1017d3661f47c915e0c64e9735773dc4e22770c07f46bae168a2dffc44d
+      https://raw.githubusercontent.com/vmchale/github-actions-dhall/master/dhall-ci.dhall sha256:f88d01d5a7f1b3baddd1ba356589fa3723674a2a8ba17e3ae698f6400a31e447
 
 in      dhallCi.dhallSteps
           [ dhallCi.dhallYamlInstall
           , dhallCi.checkDhallYaml [ "self-ci.dhall", "hlint.dhall" ]
           ]
-      ⫽ { on =
-            [ dhallCi.printEvent dhallCi.Event.Push
-            , dhallCi.printEvent dhallCi.Event.PullRequest
-            ]
-        }
+      ⫽ { on = [ dhallCi.Event.push, dhallCi.Event.pull_request ] }
     : dhallCi.CI
