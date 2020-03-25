@@ -5,9 +5,9 @@ jobs:
       - uses: "actions/checkout@v1"
       - uses: "actions/setup-haskell@v1"
         with:
-          cabal-version: "3.0"
-          ghc-version: "8.6.5"
-      - name: "Install dhall"
+          cabal-version: '3.0'
+          ghc-version: '8.8.3'
+      - name: Install dhall
         run: |
           cabal update
           cd "$(mktemp -d /tmp/dhall-XXX)"
@@ -17,12 +17,12 @@ jobs:
           cabal update
           cd "$(mktemp -d /tmp/dhall-XXX)"
           cabal install dhall-json
-      - name: "Check Dhall can be converted to YAML"
+      - name: Check Dhall can be converted to YAML
         run: |
           export PATH=$HOME/.cabal/bin:$PATH
           dhall-to-yaml --file self-ci.dhall
           dhall-to-yaml --file hlint.dhall
-name: "Dhall CI"
+name: Dhall CI
 on:
   - push
   - pull_request
