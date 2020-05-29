@@ -5,6 +5,6 @@ in  [ hlint.error
         }
     , hlint.error
         { error =
-            { lhs = "fmap (const ())", rhs = "void", name = Some "Use void" }
+          { lhs = "fmap (const ())", rhs = "void", name = Some "Use void" }
         }
     ]

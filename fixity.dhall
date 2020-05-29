@@ -38,11 +38,11 @@ let applicativeFixity =
 let functorFixity =
       mkFixityList [ "infixl 4 <\$", "infixl 4 \$>", "infixl 1 <&>" ]
 
-in  { mkFixity = mkFixity
-    , arrowFixity = arrowFixity
-    , monadFixity = monadFixity
-    , applicativeFixity = applicativeFixity
-    , composeFixity = composeFixity
+in  { mkFixity
+    , arrowFixity
+    , monadFixity
+    , applicativeFixity
+    , composeFixity
     , defFixities =
         arrowFixity # monadFixity # functorFixity # applicativeFixity
     }

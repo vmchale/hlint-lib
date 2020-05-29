@@ -6,4 +6,4 @@ let Fixity = { fixity : Text }
 
 let Hint = < Error : Error | Functions : Function | Fixity : Fixity >
 
-in  { Error = Error, Function = Function, Fixity = Fixity, Hint = Hint }
+in  { Error, Function, Fixity, Hint }
