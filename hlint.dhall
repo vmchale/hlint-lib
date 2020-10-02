@@ -7,8 +7,7 @@ let recursion =
 let fixity =
       ./fixity.dhall sha256:790a07ca801347ce8dafaa1dd0588dc7540b5987264381926900bf1316ea6cbc
 
-let base =
-      ./base.dhall sha256:19d1fd7ef2a8ef199d0397e59961f3b9a41107ca6e5eba4b903298580e77196a
+let base = ./base.dhall
 
 let bannedFunctions =
       [ hlint.functions { functions = [ hlint.globalBan "fromJust" ] } ]

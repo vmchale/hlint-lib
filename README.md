@@ -66,6 +66,10 @@ get
     lhs: "fmap (const ())"
     name: "Use void"
     rhs: void
+- error:
+    lhs: "fromMaybe []"
+    name: Use concat
+    rhs: concat
 ```
 
 ...containing prepackaged hints for working with recursion schemes as well as
