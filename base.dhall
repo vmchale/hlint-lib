@@ -7,4 +7,8 @@ in  [ hlint.error
         { error =
           { lhs = "fmap (const ())", rhs = "void", name = Some "Use void" }
         }
+    , hlint.error
+        { error =
+          { lhs = "fromMaybe []", rhs = "concat", name = Some "Use concat" }
+        }
     ]
